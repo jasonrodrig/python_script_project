@@ -91,15 +91,15 @@ def read_file(fileout):
 
 
 def student_count():
-	
+
 	global i
- 
+
 	write_file("\n")
 	write_file(" total number of student : " + str( i ) )
 
 
 def individual_student_average():
-	
+
 	global s
 	top_performers_list = {}
 
@@ -110,16 +110,16 @@ def individual_student_average():
 		average = ( s[i].math + s[i].physics + s[i].chemistry + s[i].biology ) / 4
 		top_performers_list[str(s[i].name)] = average
 		write_file( str(i+1) + ". " + str(s[i].name) + "'s average score : " + str( average ) )
-		
+
 	top_3_performers(top_performers_list)
-	
+
 def top_3_performers(l):
 	count = 0
 	sort = sorted( l.items() , key = lambda x: x[1] , reverse = True )
-	
+
 	write_file("\n")
 	write_file(" Calculation on top 3 performers based on thier average scores " )
-	
+
 	for k , v in sort:
 		if(count == 3):
 			break
@@ -127,14 +127,14 @@ def top_3_performers(l):
 		count += 1
 
 def class_subject_average():
-	
+
 	global s 
-	
+
 	write_file("\n")
 	write_file(" Calculation on class subject averages")
 	total_math , total_physics , total_chemistry , total_biology = 0 , 0 , 0 , 0 
 	average_math , average_physics , average_chemistry , average_biology = 0 , 0 , 0 , 0 
-	
+
 	for i in range(len(s)):
 		total_math +=  s[i].math 
 	average_math = total_math / len(s)
@@ -146,26 +146,26 @@ def class_subject_average():
 	average_physics = total_physics / len(s)
 
 	write_file( "2." + " class average score on physics : " + str( average_physics ) )
-	
+
 	for i in range(len(s)):
 		total_chemistry +=  s[i].chemistry 
 	average_chemistry = total_chemistry / len(s)
-	
+
 	write_file( "3." + " class average score on chemistry : " + str( average_chemistry ) )
-	
+
 	for i in range(len(s)):
 		total_biology +=  s[i].biology 
 	average_biology = total_biology / len(s)
 
 	write_file( "4." + " class average score on biology : " + str( average_biology ) )
-	
+
 	overall_class_average( average_math , average_physics , average_chemistry , average_biology )
 
 
 def overall_class_average( average_math , average_physics , average_chemistry , average_biology ):
-	
+
 	global s
-	
+
 	total_average = ( average_math + average_physics + average_chemistry + average_biology ) / len(s)
 	write_file("\n")
 	write_file(" Calculation on Total class averages")
@@ -173,17 +173,17 @@ def overall_class_average( average_math , average_physics , average_chemistry , 
 
 
 def highest_and_lowest_subject_scores():
-	
+
 	global s
-	
+
 	write_file("\n")
 	write_file(" Calculation on highest and lowest scores recorded on each subject ")
-	
+
 	math_score      = [ int(s[i].math)        for i in range( len( s ) ) ]
 	physics_score   = [ int(s[i].physics)     for i in range( len( s ) ) ]
 	chemistry_score = [ int(s[i].chemistry)   for i in range( len( s ) ) ]
 	biology_score   = [ int(s[i].biology)     for i in range( len( s ) ) ]
-	
+
 	write_file( "1." + " highest score on math : " + str( max( math_score ) ) )
 	write_file( "2." + " lowest  score on math : " + str( min( math_score ) ) )
 	write_file( "3." + " highest score on physics : " + str( max( physics_score ) ) )
@@ -195,7 +195,7 @@ def highest_and_lowest_subject_scores():
 
 
 def above_90_scored_for_particluar_subject():
-	
+
 	global s
 
 	count = 1
@@ -203,19 +203,19 @@ def above_90_scored_for_particluar_subject():
 
 	write_file("\n")
 	write_file(" student scored above 90 marks in maths ")
-	
+
 	for i in range( len( s ) ):
 		if( s[i].math > 90 ):
 			write_file( str( count ) + ". " + str(s[i].name) + " : " + str(s[i].math ) )
 			count += 1
 			found = True
-			
+
 	if not found:
 		write_file(" None ")
 
 	write_file("\n")
 	write_file(" student scored above 90 marks in chemistry ")
-	
+
 	count = 1
 	found = False
 
@@ -224,10 +224,10 @@ def above_90_scored_for_particluar_subject():
 			write_file( str( count ) + ". " + str(s[i].name) + " : " + str(s[i].chemistry) )
 			count += 1
 			found = True
-		
+
 	if not found:
 		write_file(" None ")
-			
+
 	write_file("\n")
 	write_file(" student scored above 90 marks in biology ")
 
@@ -239,13 +239,13 @@ def above_90_scored_for_particluar_subject():
 			write_file( str( count ) + ". " + str(s[i].name) + " : " + str(s[i].biology ) )
 			count += 1
 			found = True
-			
+
 	if not found:
 		write_file(" None ")
-	
+
 	write_file("\n")
 	write_file(" student scored above 90 marks in physics ")
-	
+
 	count = 1
 	found = False
 
@@ -257,7 +257,7 @@ def above_90_scored_for_particluar_subject():
 
 	if not found:
 		write_file(" None ")
-			
+
 def run_script():
 	open_file(filein)
 	student_count()	
